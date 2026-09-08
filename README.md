@@ -72,6 +72,7 @@ This repository is shared for educational purposes.
 ## Array
 |  |
 | ------- |
+| [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
 | [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
 ## String
 |  |
@@ -85,4 +86,8 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
 <!---LeetCode Topics End-->
