@@ -66,3 +66,23 @@ Each folder contains the source code for the corresponding LeetCode problem.
 ## License
 
 This repository is shared for educational purposes.
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+|  |
+| ------- |
+| [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
+## String
+|  |
+| ------- |
+| [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
+## Trie
+|  |
+| ------- |
+| [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
+## Counting
+|  |
+| ------- |
+| [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
+<!---LeetCode Topics End-->
