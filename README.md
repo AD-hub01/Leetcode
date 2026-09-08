@@ -72,6 +72,7 @@ This repository is shared for educational purposes.
 ## Array
 |  |
 | ------- |
+| [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
 | [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
 ## String
@@ -109,4 +110,16 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0515-find-largest-value-in-each-tree-row](https://github.com/AD-hub01/Leetcode/tree/master/0515-find-largest-value-in-each-tree-row) |
+## Stack
+|  |
+| ------- |
+| [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
+## Monotonic Stack
+|  |
+| ------- |
+| [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
+## Range Minimum/Maximum Query
+|  |
+| ------- |
+| [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 <!---LeetCode Topics End-->
