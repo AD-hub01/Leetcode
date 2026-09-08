@@ -124,6 +124,7 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
+| [0232-implement-queue-using-stacks](https://github.com/AD-hub01/Leetcode/tree/master/0232-implement-queue-using-stacks) |
 ## Monotonic Stack
 |  |
 | ------- |
@@ -132,4 +133,12 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
+## Design
+|  |
+| ------- |
+| [0232-implement-queue-using-stacks](https://github.com/AD-hub01/Leetcode/tree/master/0232-implement-queue-using-stacks) |
+## Queue
+|  |
+| ------- |
+| [0232-implement-queue-using-stacks](https://github.com/AD-hub01/Leetcode/tree/master/0232-implement-queue-using-stacks) |
 <!---LeetCode Topics End-->
