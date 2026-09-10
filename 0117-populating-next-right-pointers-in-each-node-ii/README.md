@@ -1,46 +1,90 @@
-<h2><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii">117. Populating Next Right Pointers in Each Node II</a></h2><h3>Medium</h3><hr><p>Given a binary tree</p>
+# LeetCode 117 - Populating Next Right Pointers in Each Node II
 
-<pre>
-struct Node {
-  int val;
-  Node *left;
-  Node *right;
-  Node *next;
-}
-</pre>
+## Problem
 
-<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to <code>NULL</code>.</p>
+Given a binary tree where each node has a `next` pointer, populate the `next` pointer of each node so that it points to the **next node on the same level**.
 
-<p>Initially, all next pointers are set to <code>NULL</code>.</p>
+If there is no next node on the same level, the `next` pointer should be set to `NULL`.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/02/15/117_sample.png" style="width: 500px; height: 171px;" />
-<pre>
-<strong>Input:</strong> root = [1,2,3,4,5,null,7]
-<strong>Output:</strong> [1,#,2,3,#,4,5,7,#]
-<strong>Explanation: </strong>Given the above binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with &#39;#&#39; signifying the end of each level.
-</pre>
+Unlike Problem 116, this binary tree **is not necessarily perfect**.
 
-<p><strong class="example">Example 2:</strong></p>
+---
 
-<pre>
-<strong>Input:</strong> root = []
-<strong>Output:</strong> []
-</pre>
+## Intuition
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+We need to connect nodes that belong to the same level.
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[0, 6000]</code>.</li>
-	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-</ul>
+For example:
 
-<p>&nbsp;</p>
-<p><strong>Follow-up:</strong></p>
+```text
+        1
+       / \
+      2   3
+     /     \
+    4       5
+```
 
-<ul>
-	<li>You may only use constant extra space.</li>
-	<li>The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.</li>
-</ul>
+The `next` pointers should become:
+
+```text
+1 → NULL
+2 → 3 → NULL
+4 → 5 → NULL
+```
+
+Since nodes on the same level need to be connected, **level-order traversal (BFS)** is a natural approach.
+
+We can process each level and connect the nodes from left to right.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+* Start with the root node.
+* Process all nodes belonging to the current level.
+* Keep track of the previous node while processing the level.
+* Connect the previous node's `next` pointer to the current node.
+* Add the current node's children to the queue.
+* After processing a level, the last node's `next` remains `NULL`.
+* Continue until all levels have been processed.
+
+Because the tree may be incomplete, we only connect children that actually exist.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to perform level-order traversal.
+* **Next Pointer** — to connect nodes on the same level.
+* **Variable / Pointer** — to keep track of the previous node in the current level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain nodes from the largest level of the tree. In the worst case, this can be `O(n)`.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS + Next Pointer Connection**.
+
+Process the tree level by level and connect every node to the next node on the same level.
+
+The important difference from **LeetCode 116** is that this tree **does not have to be perfect**, so some nodes may have missing children.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
