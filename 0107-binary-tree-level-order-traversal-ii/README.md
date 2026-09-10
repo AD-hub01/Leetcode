@@ -1,31 +1,62 @@
-<h2><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii">107. Binary Tree Level Order Traversal II</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, return <em>the bottom-up level order traversal of its nodes&#39; values</em>. (i.e., from left to right, level by level from leaf to root).</p>
+# LeetCode 107 - Binary Tree Level Order Traversal II
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg" style="width: 277px; height: 302px;" />
-<pre>
-<strong>Input:</strong> root = [3,9,20,null,null,15,7]
-<strong>Output:</strong> [[15,7],[9,20],[3]]
-</pre>
+## Problem
 
-<p><strong class="example">Example 2:</strong></p>
+Given the root of a binary tree, return the **bottom-up level order traversal** of its nodes' values.
 
-<pre>
-<strong>Input:</strong> root = [1]
-<strong>Output:</strong> [[1]]
-</pre>
+The traversal should visit the tree **level by level from left to right**, but the final result must contain the levels in **reverse order**.
 
-<p><strong class="example">Example 3:</strong></p>
+---
 
-<pre>
-<strong>Input:</strong> root = []
-<strong>Output:</strong> []
-</pre>
+## Intuition
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+This problem is almost the same as normal **Level Order Traversal (BFS)**.
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[0, 2000]</code>.</li>
-	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
-</ul>
+The only difference is that instead of returning the levels from the root to the deepest level, we need to return them from the **deepest level back to the root**.
+
+We can perform a normal level order traversal and then reverse the collection of levels at the end.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+* Traverse the binary tree level by level.
+* Store the values of each level in a separate list.
+* Continue until all nodes have been processed.
+* Reverse the list of levels to obtain the required bottom-up order.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to process nodes level by level.
+* **List / Array** — to store the values of each level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once. Reversing the list of levels takes `O(n)` in the worst case.
+
+### Space Complexity
+
+**O(n)**
+
+The queue and the result can contain up to `n` nodes/values.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS with reversed level order**.
+
+First perform a normal level order traversal, then reverse the resulting levels to get the **bottom-up traversal**.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
