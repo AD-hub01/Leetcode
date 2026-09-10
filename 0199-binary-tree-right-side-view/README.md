@@ -1,50 +1,80 @@
-<h2><a href="https://leetcode.com/problems/binary-tree-right-side-view">199. Binary Tree Right Side View</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, imagine yourself standing on the <strong>right side</strong> of it, return <em>the values of the nodes you can see ordered from top to bottom</em>.</p>
+# LeetCode 199 - Binary Tree Right Side View
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+## Problem
 
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">root = [1,2,3,null,5,null,4]</span></p>
+Given the root of a binary tree, imagine standing on the **right side of the tree**.
 
-<p><strong>Output:</strong> <span class="example-io">[1,3,4]</span></p>
+Return the values of the nodes that are visible from the right side, ordered from the **top level to the bottom level**.
 
-<p><strong>Explanation:</strong></p>
+---
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2024/11/24/tmpd5jn43fs-1.png" style="width: 400px; height: 207px;" /></p>
-</div>
+## Intuition
 
-<p><strong class="example">Example 2:</strong></p>
+From the right side, we can see only the **rightmost node of each level**.
 
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">root = [1,2,3,4,null,null,null,5]</span></p>
+For example:
 
-<p><strong>Output:</strong> <span class="example-io">[1,3,4,5]</span></p>
+```text
+        1
+       / \
+      2   3
+       \   \
+        5   4
+```
 
-<p><strong>Explanation:</strong></p>
+The nodes visible from the right side are:
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2024/11/24/tmpkpe40xeh-1.png" style="width: 400px; height: 214px;" /></p>
-</div>
+```text
+[1, 3, 4]
+```
 
-<p><strong class="example">Example 3:</strong></p>
+Since we need one node from each level, **Breadth-First Search (BFS)** is a natural choice.
 
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">root = [1,null,3]</span></p>
+During level-order traversal, the last node processed at every level is the rightmost node.
 
-<p><strong>Output:</strong> <span class="example-io">[1,3]</span></p>
-</div>
+---
 
-<p><strong class="example">Example 4:</strong></p>
+## Approach
 
-<div class="example-block">
-<p><strong>Input:</strong> <span class="example-io">root = []</span></p>
+Use **Breadth-First Search (BFS)** with a queue.
 
-<p><strong>Output:</strong> <span class="example-io">[]</span></p>
-</div>
+* Traverse the tree level by level.
+* Determine the number of nodes present at the current level.
+* Process all nodes of that level.
+* The **last node** processed at that level is visible from the right side.
+* Add that node's value to the result.
+* Continue until every level has been processed.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+---
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>
-	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-</ul>
+## Data Structure Used
+
+* **Queue** — to perform level-order traversal.
+* **List / Array** — to store the visible node from each level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` nodes in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS + Rightmost Node of Each Level**.
+
+During level-order traversal, simply select the **last node from every level**.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
