@@ -1,25 +1,78 @@
-<h2><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree">637. Average of Levels in Binary Tree</a></h2><h3>Easy</h3><hr>Given the <code>root</code> of a binary tree, return <em>the average value of the nodes on each level in the form of an array</em>. Answers within <code>10<sup>-5</sup></code> of the actual answer will be accepted.
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/03/09/avg1-tree.jpg" style="width: 277px; height: 302px;" />
-<pre>
-<strong>Input:</strong> root = [3,9,20,null,null,15,7]
-<strong>Output:</strong> [3.00000,14.50000,11.00000]
-Explanation: The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11.
-Hence return [3, 14.5, 11].
-</pre>
+# LeetCode 637 - Average of Levels in Binary Tree
 
-<p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/03/09/avg2-tree.jpg" style="width: 292px; height: 302px;" />
-<pre>
-<strong>Input:</strong> root = [3,9,20,15,7]
-<strong>Output:</strong> [3.00000,14.50000,11.00000]
-</pre>
+## Problem
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+Given the root of a binary tree, return the **average value of the nodes on each level** of the tree.
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>
-	<li><code>-2<sup>31</sup> &lt;= Node.val &lt;= 2<sup>31</sup> - 1</code></li>
-</ul>
+The answer should be returned as an array of floating-point values.
+
+---
+
+## Intuition
+
+We need to calculate the average separately for every level of the binary tree.
+
+Since nodes need to be processed **level by level**, **Breadth-First Search (BFS)** is a natural approach.
+
+For each level, we calculate:
+
+```text
+Average = Sum of Node Values / Number of Nodes
+```
+
+We then store the average in the result.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+* Start with the root node.
+* Process all nodes belonging to the current level.
+* Calculate the sum of their values.
+* Count the number of nodes in that level.
+* Divide the sum by the number of nodes to obtain the average.
+* Add the average to the result.
+* Add the children of the current nodes to the queue.
+* Continue until all levels have been processed.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to process nodes level by level.
+* **List / Array** — to store the average of each level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` nodes in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS + Average of Each Level**.
+
+For every level:
+
+```text
+Average = Sum of values / Number of nodes
+```
+
+Calculate this value and add it to the result.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
