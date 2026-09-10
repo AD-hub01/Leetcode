@@ -1,51 +1,111 @@
-<h2><a href="https://leetcode.com/problems/sum-of-prefix-scores-of-strings">2494. Sum of Prefix Scores of Strings</a></h2><h3>Hard</h3><hr><p>You are given an array <code>words</code> of size <code>n</code> consisting of <strong>non-empty</strong> strings.</p>
+# LeetCode 2416 - Sum of Prefix Scores of Strings
 
-<p>We define the <strong>score</strong> of a string <code>term</code> as the <strong>number</strong> of strings <code>words[i]</code> such that <code>term</code> is a <strong>prefix</strong> of <code>words[i]</code>.</p>
+## Problem
 
-<ul>
-	<li>For example, if <code>words = [&quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;cab&quot;]</code>, then the score of <code>&quot;ab&quot;</code> is <code>2</code>, since <code>&quot;ab&quot;</code> is a prefix of both <code>&quot;ab&quot;</code> and <code>&quot;abc&quot;</code>.</li>
-</ul>
+You are given an array of strings `words`.
 
-<p>Return <em>an array </em><code>answer</code><em> of size </em><code>n</code><em> where </em><code>answer[i]</code><em> is the <strong>sum</strong> of scores of every <strong>non-empty</strong> prefix of </em><code>words[i]</code>.</p>
+For each string, calculate the **sum of the scores of all its prefixes**.
 
-<p><strong>Note</strong> that a string is considered as a prefix of itself.</p>
+The **score of a string** is defined as the number of strings in `words` that have that string as a prefix.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+For every word, return its total prefix score.
 
-<pre>
-<strong>Input:</strong> words = [&quot;abc&quot;,&quot;ab&quot;,&quot;bc&quot;,&quot;b&quot;]
-<strong>Output:</strong> [5,4,3,2]
-<strong>Explanation:</strong> The answer for each string is the following:
-- &quot;abc&quot; has 3 prefixes: &quot;a&quot;, &quot;ab&quot;, and &quot;abc&quot;.
-- There are 2 strings with the prefix &quot;a&quot;, 2 strings with the prefix &quot;ab&quot;, and 1 string with the prefix &quot;abc&quot;.
-The total is answer[0] = 2 + 2 + 1 = 5.
-- &quot;ab&quot; has 2 prefixes: &quot;a&quot; and &quot;ab&quot;.
-- There are 2 strings with the prefix &quot;a&quot;, and 2 strings with the prefix &quot;ab&quot;.
-The total is answer[1] = 2 + 2 = 4.
-- &quot;bc&quot; has 2 prefixes: &quot;b&quot; and &quot;bc&quot;.
-- There are 2 strings with the prefix &quot;b&quot;, and 1 string with the prefix &quot;bc&quot;.
-The total is answer[2] = 2 + 1 = 3.
-- &quot;b&quot; has 1 prefix: &quot;b&quot;.
-- There are 2 strings with the prefix &quot;b&quot;.
-The total is answer[3] = 2.
-</pre>
+---
 
-<p><strong class="example">Example 2:</strong></p>
+## Intuition
 
-<pre>
-<strong>Input:</strong> words = [&quot;abcd&quot;]
-<strong>Output:</strong> [4]
-<strong>Explanation:</strong>
-&quot;abcd&quot; has 4 prefixes: &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, and &quot;abcd&quot;.
-Each prefix has a score of one, so the total is answer[0] = 1 + 1 + 1 + 1 = 4.
-</pre>
+A prefix is any starting part of a word.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+For example:
 
-<ul>
-	<li><code>1 &lt;= words.length &lt;= 1000</code></li>
-	<li><code>1 &lt;= words[i].length &lt;= 1000</code></li>
-	<li><code>words[i]</code> consists of lowercase English letters.</li>
-</ul>
+```text id="w6fz8e"
+word = "abc"
+
+Prefixes:
+"a"
+"ab"
+"abc"
+```
+
+For every prefix, we need to know **how many words contain that prefix**.
+
+A **Trie (Prefix Tree)** is ideal for this problem because words with the same prefixes share the same path.
+
+While inserting the words into the Trie, we can maintain a count at every node representing how many words pass through that prefix.
+
+Then, while processing a word, we can traverse its prefixes and add the count stored at each corresponding Trie node.
+
+---
+
+## Approach
+
+Use a **Trie** to store all the words.
+
+Each Trie node contains:
+
+* Links to its child characters.
+* A count representing how many words pass through that node.
+
+### Building the Trie
+
+Insert every word into the Trie.
+
+Whenever a character is visited during insertion, increase the count of that Trie node.
+
+This makes the count at a node equal to the number of words having that prefix.
+
+### Calculating Scores
+
+For each word:
+
+* Traverse its characters through the Trie.
+* At every character, retrieve the count stored at that node.
+* Add these counts together.
+* The resulting sum is the prefix score for that word.
+
+---
+
+## Data Structure Used
+
+* **Trie / Prefix Tree** — to efficiently store and search prefixes.
+* **Array / Hash Map** — to store child nodes depending on the implementation.
+* **Count** — to store the number of words sharing each prefix.
+
+---
+
+## Complexity Analysis
+
+Let `N` be the number of words and `L` be the total number of characters across all words.
+
+### Time Complexity
+
+**O(L)**
+
+Every character is processed during Trie insertion and again while calculating the prefix scores.
+
+### Space Complexity
+
+**O(L)**
+
+In the worst case, the Trie can contain one node for every character across all words.
+
+---
+
+## Key Takeaway
+
+The main concept is:
+
+**Trie + Prefix Frequency**
+
+A Trie allows all words sharing the same prefix to share the same nodes.
+
+Each Trie node stores:
+
+```text id="5l9c6n"
+Prefix → Number of words having that prefix
+```
+
+For each word, add the counts of all its prefix nodes to get its final score.
+
+**Time:** `O(L)`
+**Space:** `O(L)`
