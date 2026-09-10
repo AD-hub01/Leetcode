@@ -1,51 +1,100 @@
-<h2><a href="https://leetcode.com/problems/even-odd-tree">1731. Even Odd Tree</a></h2><h3>Medium</h3><hr><p>A binary tree is named <strong>Even-Odd</strong> if it meets the following conditions:</p>
+# LeetCode 1609 - Even Odd Tree
 
-<ul>
-	<li>The root of the binary tree is at level index <code>0</code>, its children are at level index <code>1</code>, their children are at level index <code>2</code>, etc.</li>
-	<li>For every <strong>even-indexed</strong> level, all nodes at the level have <strong>odd</strong> integer values in <strong>strictly increasing</strong> order (from left to right).</li>
-	<li>For every <b>odd-indexed</b> level, all nodes at the level have <b>even</b> integer values in <strong>strictly decreasing</strong> order (from left to right).</li>
-</ul>
+## Problem
 
-<p>Given the <code>root</code> of a binary tree, <em>return </em><code>true</code><em> if the binary tree is <strong>Even-Odd</strong>, otherwise return </em><code>false</code><em>.</em></p>
+A binary tree is called an **Even-Odd Tree** if it satisfies the following conditions:
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/sample_1_1966.png" style="width: 362px; height: 229px;" />
-<pre>
-<strong>Input:</strong> root = [1,10,4,3,null,7,9,12,8,6,null,null,2]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> The node values on each level are:
-Level 0: [1]
-Level 1: [10,4]
-Level 2: [3,7,9]
-Level 3: [12,8,6,2]
-Since levels 0 and 2 are all odd and increasing and levels 1 and 3 are all even and decreasing, the tree is Even-Odd.
-</pre>
+### Even-indexed levels
 
-<p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/sample_2_1966.png" style="width: 363px; height: 167px;" />
-<pre>
-<strong>Input:</strong> root = [5,4,2,3,3,7]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> The node values on each level are:
-Level 0: [5]
-Level 1: [4,2]
-Level 2: [3,3,7]
-Node values in level 2 must be in strictly increasing order, so the tree is not Even-Odd.
-</pre>
+* All node values must be **odd**.
+* Values must be in **strictly increasing order** from left to right.
 
-<p><strong class="example">Example 3:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/22/sample_1_333_1966.png" style="width: 363px; height: 167px;" />
-<pre>
-<strong>Input:</strong> root = [5,9,1,3,5,7]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> Node values in the level 1 should be even integers.
-</pre>
+### Odd-indexed levels
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+* All node values must be **even**.
+* Values must be in **strictly decreasing order** from left to right.
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[1, 10<sup>5</sup>]</code>.</li>
-	<li><code>1 &lt;= Node.val &lt;= 10<sup>6</sup></code></li>
-</ul>
+The root is considered to be at **level 0**.
+
+Return `true` if the binary tree satisfies all these conditions; otherwise, return `false`.
+
+---
+
+## Intuition
+
+The conditions depend on the **level** of each node.
+
+Therefore, we need to process the tree **level by level**.
+
+For every level, we check two things:
+
+1. Whether the node values have the correct **parity** (odd or even).
+2. Whether the values follow the required **increasing or decreasing order**.
+
+Since we need to process nodes level by level, **Breadth-First Search (BFS)** is a natural choice.
+
+---
+
+## Approach
+
+Use **BFS with a queue**.
+
+For each level:
+
+* Determine whether it is an even or odd level.
+* On an even level:
+
+  * Values must be odd.
+  * Values must be strictly increasing.
+* On an odd level:
+
+  * Values must be even.
+  * Values must be strictly decreasing.
+* Compare each node with the previous node in the same level.
+* If any condition is violated, return `false`.
+* Continue until all levels are checked.
+
+If every level satisfies its conditions, return `true`.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to process the binary tree level by level.
+* **Variables** — to keep track of the previous value and current level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` nodes in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is:
+
+**BFS + Level-Based Conditions**
+
+Remember:
+
+```text
+Even Level → Odd values → Strictly Increasing
+Odd Level  → Even values → Strictly Decreasing
+```
+
+Every node must satisfy both the **parity** and **ordering** condition for its level.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
