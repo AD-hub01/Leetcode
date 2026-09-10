@@ -1,39 +1,90 @@
-<h2><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii">123. Best Time to Buy and Sell Stock III</a></h2><h3>Hard</h3><hr><p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day.</p>
+# LeetCode 123 - Best Time to Buy and Sell Stock III
 
-<p>Find the maximum profit you can achieve. You may complete <strong>at most two transactions</strong>.</p>
+## Problem
 
-<p><strong>Note:</strong> You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</p>
+You are given an array `prices` where `prices[i]` represents the price of a stock on the `i-th` day.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Find the **maximum profit** you can achieve with at most **two transactions**.
 
-<pre>
-<strong>Input:</strong> prices = [3,3,5,0,0,3,1,4]
-<strong>Output:</strong> 6
-<strong>Explanation:</strong> Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
-Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.</pre>
+A transaction consists of:
 
-<p><strong class="example">Example 2:</strong></p>
+* Buying one stock
+* Selling one stock
 
-<pre>
-<strong>Input:</strong> prices = [1,2,3,4,5]
-<strong>Output:</strong> 4
-<strong>Explanation:</strong> Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
-</pre>
+You must sell the stock before buying again.
 
-<p><strong class="example">Example 3:</strong></p>
+---
 
-<pre>
-<strong>Input:</strong> prices = [7,6,4,3,1]
-<strong>Output:</strong> 0
-<strong>Explanation:</strong> In this case, no transaction is done, i.e. max profit = 0.
-</pre>
+## Intuition
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+The goal is to maximize profit using at most **two buy-and-sell transactions**.
 
-<ul>
-	<li><code>1 &lt;= prices.length &lt;= 10<sup>5</sup></code></li>
-	<li><code>0 &lt;= prices[i] &lt;= 10<sup>5</sup></code></li>
-</ul>
+A simple approach would be to try every possible combination of transactions, but that would be inefficient.
+
+Instead, we keep track of the best possible state after:
+
+* First buy
+* First sell
+* Second buy
+* Second sell
+
+As we move through the prices, each state is updated to represent the maximum profit possible up to that point.
+
+The final **second sell** state represents the maximum profit achievable using at most two transactions.
+
+---
+
+## Approach
+
+Use **Dynamic Programming / State Tracking**.
+
+Maintain four states:
+
+1. **First Buy** — maximum profit after buying for the first transaction.
+2. **First Sell** — maximum profit after selling the first transaction.
+3. **Second Buy** — maximum profit after buying for the second transaction.
+4. **Second Sell** — maximum profit after selling the second transaction.
+
+For every stock price, update these states to determine whether buying or selling at the current price improves the maximum profit.
+
+This allows both transactions to be handled in a single traversal.
+
+---
+
+## Data Structure Used
+
+* **Variables** — to store the maximum profit for each transaction state.
+* **Dynamic Programming / State Tracking** — to keep track of the best decisions made so far.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+The prices array is traversed only once.
+
+### Space Complexity
+
+**O(1)**
+
+Only four variables are maintained regardless of the size of the input.
+
+---
+
+## Key Takeaway
+
+The main concept is **Dynamic Programming with four transaction states**.
+
+Track the best result after each important action:
+
+```text
+First Buy → First Sell → Second Buy → Second Sell
+```
+
+The final **Second Sell** state gives the maximum profit possible with at most two transactions.
+
+**Time:** `O(n)`
+**Space:** `O(1)`
