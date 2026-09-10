@@ -1,31 +1,72 @@
-<h2><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal">103. Binary Tree Zigzag Level Order Traversal</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, return <em>the zigzag level order traversal of its nodes&#39; values</em>. (i.e., from left to right, then right to left for the next level and alternate between).</p>
+# LeetCode 103 - Binary Tree Zigzag Level Order Traversal
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg" style="width: 277px; height: 302px;" />
-<pre>
-<strong>Input:</strong> root = [3,9,20,null,null,15,7]
-<strong>Output:</strong> [[3],[20,9],[15,7]]
-</pre>
+## Problem
 
-<p><strong class="example">Example 2:</strong></p>
+Given the root of a binary tree, return the **zigzag level order traversal** of its nodes' values.
 
-<pre>
-<strong>Input:</strong> root = [1]
-<strong>Output:</strong> [[1]]
-</pre>
+In zigzag traversal, the nodes are visited level by level, but the direction alternates between:
 
-<p><strong class="example">Example 3:</strong></p>
+* **Left → Right**
+* **Right → Left**
+* **Left → Right**
+* And so on.
 
-<pre>
-<strong>Input:</strong> root = []
-<strong>Output:</strong> []
-</pre>
+---
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+## Intuition
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[0, 2000]</code>.</li>
-	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-</ul>
+This problem is similar to normal **level order traversal**, but the direction of traversal changes after every level.
+
+A **Queue** can be used to process the tree level by level. For every level, we collect the node values and reverse the order when the current level requires a right-to-left traversal.
+
+A boolean variable can be used to keep track of the current direction.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+* Start with the root node in the queue.
+* Process all nodes belonging to the current level.
+* Store their values in a temporary list.
+* Add their left and right children to the queue.
+* For alternating levels, reverse the temporary list before adding it to the result.
+* Continue until all nodes have been processed.
+
+The direction can be controlled using a simple flag that changes after every level.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to process nodes level by level.
+* **List / Array** — to store values of each level and the final result.
+* **Boolean Flag** — to track the traversal direction.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited once. Reversing the level lists also takes a total of `O(n)` across all levels.
+
+### Space Complexity
+
+**O(n)**
+
+The queue and result can contain up to `n` nodes/values in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS + Alternating Direction**.
+
+Normal level order traversal visits every level from left to right, while zigzag traversal changes the direction after every level.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
