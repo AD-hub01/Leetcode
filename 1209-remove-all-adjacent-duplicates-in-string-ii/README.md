@@ -1,39 +1,83 @@
-<h2><a href="https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii">1320. Remove All Adjacent Duplicates in String II</a></h2><h3>Medium</h3><hr><p>You are given a string <code>s</code> and an integer <code>k</code>, a <code>k</code> <strong>duplicate removal</strong> consists of choosing <code>k</code> adjacent and equal letters from <code>s</code> and removing them, causing the left and the right side of the deleted substring to concatenate together.</p>
+# LeetCode 1209 - Remove All Adjacent Duplicates in String II
 
-<p>We repeatedly make <code>k</code> <strong>duplicate removals</strong> on <code>s</code> until we no longer can.</p>
+## Problem
 
-<p>Return <em>the final string after all such duplicate removals have been made</em>. It is guaranteed that the answer is <strong>unique</strong>.</p>
+Given a string `s` and an integer `k`, repeatedly remove **k adjacent, equal characters** from the string.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Continue removing groups until no more such groups exist.
 
-<pre>
-<strong>Input:</strong> s = &quot;abcd&quot;, k = 2
-<strong>Output:</strong> &quot;abcd&quot;
-<strong>Explanation: </strong>There&#39;s nothing to delete.</pre>
+Return the final string after all possible removals.
 
-<p><strong class="example">Example 2:</strong></p>
+---
 
-<pre>
-<strong>Input:</strong> s = &quot;deeedbbcccbdaa&quot;, k = 3
-<strong>Output:</strong> &quot;aa&quot;
-<strong>Explanation: 
-</strong>First delete &quot;eee&quot; and &quot;ccc&quot;, get &quot;ddbbbdaa&quot;
-Then delete &quot;bbb&quot;, get &quot;dddaa&quot;
-Finally delete &quot;ddd&quot;, get &quot;aa&quot;</pre>
+## Intuition
 
-<p><strong class="example">Example 3:</strong></p>
+The important part is that removing one group of characters can create a **new group of k equal characters**.
 
-<pre>
-<strong>Input:</strong> s = &quot;pbbcggttciiippooaais&quot;, k = 2
-<strong>Output:</strong> &quot;ps&quot;
-</pre>
+For example:
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+```text
+s = "deeedbbcccbdaa"
+k = 3
+```
 
-<ul>
-	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
-	<li><code>2 &lt;= k &lt;= 10<sup>4</sup></code></li>
-	<li><code>s</code> only contains lowercase English letters.</li>
-</ul>
+When three consecutive equal characters are removed, the characters around them can become adjacent and may form another removable group.
+
+A **stack** is useful because it allows us to keep track of consecutive characters and their frequencies while processing the string from left to right.
+
+---
+
+## Approach
+
+Use a **stack** where each entry stores:
+
+```text
+(character, count)
+```
+
+For every character:
+
+* If it is different from the character at the top of the stack, add it with a count of `1`.
+* If it is the same, increase the count of the top element.
+* When the count reaches `k`, remove that entry from the stack.
+* Continue processing the remaining characters.
+
+This automatically handles newly formed adjacent groups after a removal.
+
+---
+
+## Data Structure Used
+
+* **Stack** — to maintain characters and their consecutive frequencies.
+* **Pair / Tuple** — to store each character along with its count.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Each character is processed and added to or removed from the stack at most a constant number of times.
+
+### Space Complexity
+
+**O(n)**
+
+In the worst case, the stack can contain information for all characters.
+
+---
+
+## Key Takeaway
+
+The main concept is:
+
+**Stack + Frequency Counting**
+
+Instead of repeatedly searching for groups of `k` characters, maintain the count of consecutive characters while traversing the string.
+
+When a count reaches `k`, remove that group immediately.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
