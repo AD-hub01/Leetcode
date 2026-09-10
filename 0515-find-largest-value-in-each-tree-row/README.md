@@ -1,24 +1,65 @@
-<h2><a href="https://leetcode.com/problems/find-largest-value-in-each-tree-row">515. Find Largest Value in Each Tree Row</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, return <em>an array of the largest value in each row</em> of the tree <strong>(0-indexed)</strong>.</p>
+# LeetCode 515 - Find Largest Value in Each Tree Row
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/08/21/largest_e1.jpg" style="width: 300px; height: 172px;" />
-<pre>
-<strong>Input:</strong> root = [1,3,2,5,3,null,9]
-<strong>Output:</strong> [1,3,9]
-</pre>
+## Problem
 
-<p><strong class="example">Example 2:</strong></p>
+Given the root of a binary tree, return an array containing the **largest value in each row** of the tree.
 
-<pre>
-<strong>Input:</strong> root = [1,2,3]
-<strong>Output:</strong> [1,3]
-</pre>
+Each row represents one level of the binary tree.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+---
 
-<ul>
-	<li>The number of nodes in the tree will be in the range <code>[0, 10<sup>4</sup>]</code>.</li>
-	<li><code>-2<sup>31</sup> &lt;= Node.val &lt;= 2<sup>31</sup> - 1</code></li>
-</ul>
+## Intuition
+
+We need to find the maximum value among all nodes at every level.
+
+Since a binary tree can be processed **level by level**, **Breadth-First Search (BFS)** is a suitable approach.
+
+While processing each level, we keep track of the largest value found in that level and add it to the result.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+* Start with the root node.
+* Process all nodes belonging to the current level.
+* Keep a variable to store the maximum value for that level.
+* Compare every node's value with the current maximum.
+* Add the maximum value of the level to the result.
+* Add the children of each node to the queue.
+* Repeat until all levels are processed.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to process the binary tree level by level.
+* **List / Array** — to store the maximum value from each level.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node in the binary tree is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` nodes in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is **BFS + Maximum Value per Level**.
+
+For every level of the binary tree, find the largest node value and store it in the result.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
