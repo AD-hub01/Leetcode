@@ -1,40 +1,101 @@
-<h2><a href="https://leetcode.com/problems/maximum-width-of-binary-tree">662. Maximum Width of Binary Tree</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, return <em>the <strong>maximum width</strong> of the given tree</em>.</p>
+# LeetCode 662 - Maximum Width of Binary Tree
 
-<p>The <strong>maximum width</strong> of a tree is the maximum <strong>width</strong> among all levels.</p>
+## Problem
 
-<p>The <strong>width</strong> of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), where the null nodes between the end-nodes that would be present in a complete binary tree extending down to that level are also counted into the length calculation.</p>
+Given the root of a binary tree, return the **maximum width** of the tree.
 
-<p>It is <strong>guaranteed</strong> that the answer will in the range of a <strong>32-bit</strong> signed integer.</p>
+The width of a level is defined as the distance between the **leftmost and rightmost non-null nodes**, including the positions of the null nodes between them.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/05/03/width1-tree.jpg" style="width: 359px; height: 302px;" />
-<pre>
-<strong>Input:</strong> root = [1,3,2,5,3,null,9]
-<strong>Output:</strong> 4
-<strong>Explanation:</strong> The maximum width exists in the third level with length 4 (5,3,null,9).
-</pre>
+---
 
-<p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2022/03/14/maximum-width-of-binary-tree-v3.jpg" style="width: 442px; height: 422px;" />
-<pre>
-<strong>Input:</strong> root = [1,3,2,5,null,null,9,6,null,7]
-<strong>Output:</strong> 7
-<strong>Explanation:</strong> The maximum width exists in the fourth level with length 7 (6,null,null,null,null,null,7).
-</pre>
+## Intuition
 
-<p><strong class="example">Example 3:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/05/03/width3-tree.jpg" style="width: 289px; height: 299px;" />
-<pre>
-<strong>Input:</strong> root = [1,3,2,5]
-<strong>Output:</strong> 2
-<strong>Explanation:</strong> The maximum width exists in the second level with length 2 (3,2).
-</pre>
+The important part of this problem is that we must consider the positions of **null nodes** between the actual nodes.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+For example:
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[1, 3000]</code>.</li>
-	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-</ul>
+```text id="w8k5pd"
+        1
+       / \
+      3   2
+     /     \
+    5       9
+```
+
+The width of the last level is `4` because the positions can be considered as:
+
+```text id="8g5wpa"
+5   null   null   9
+```
+
+Simply counting the number of nodes at each level would therefore give an incorrect result.
+
+To keep track of these positions, we can assign each node an **index**, similar to the indexing used for a complete binary tree.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+Along with each node, store its corresponding position/index.
+
+For a node at index `i`:
+
+```text id="d8zz0j"
+Left Child  = 2 × i
+Right Child = 2 × i + 1
+```
+
+For every level:
+
+* Identify the index of the first node.
+* Identify the index of the last node.
+* Calculate the width using their positions.
+* Update the maximum width.
+* Add the children with their corresponding positions to the queue.
+
+To avoid unnecessarily large index values, the indices can be normalized at every level.
+
+---
+
+## Data Structure Used
+
+* **Queue** — for level-order traversal.
+* **Index / Position** — to preserve the relative positions of nodes.
+* **List / Variables** — to track the maximum width.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is visited exactly once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` nodes in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is:
+
+**BFS + Position Indexing**
+
+We cannot simply count nodes because **null positions between nodes contribute to the width**.
+
+By assigning each node a position, we can calculate:
+
+```text id="k5eqc3"
+Width = Rightmost Position - Leftmost Position + 1
+```
+
+**Time:** `O(n)`
+**Space:** `O(n)`
