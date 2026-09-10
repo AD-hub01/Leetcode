@@ -1,28 +1,95 @@
-<h2><a href="https://leetcode.com/problems/check-completeness-of-a-binary-tree">998. Check Completeness of a Binary Tree</a></h2><h3>Medium</h3><hr><p>Given the <code>root</code> of a binary tree, determine if it is a <em>complete binary tree</em>.</p>
+# LeetCode 958 - Check Completeness of a Binary Tree
 
-<p>In a <strong><a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees" target="_blank">complete binary tree</a></strong>, every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between <code>1</code> and <code>2<sup>h</sup></code> nodes inclusive at the last level <code>h</code>.</p>
+## Problem
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png" style="width: 180px; height: 145px;" />
-<pre>
-<strong>Input:</strong> root = [1,2,3,4,5,6]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> Every level before the last is full (ie. levels with node-values {1} and {2, 3}), and all nodes in the last level ({4, 5, 6}) are as far left as possible.
-</pre>
+Given the root of a binary tree, determine whether the tree is a **complete binary tree**.
 
-<p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-2.png" style="width: 200px; height: 145px;" />
-<pre>
-<strong>Input:</strong> root = [1,2,3,4,5,null,7]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> The node with value 7 isn&#39;t as far left as possible.
-</pre>
+A complete binary tree is a tree where:
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+* Every level is completely filled except possibly the last level.
+* In the last level, all nodes are as far **left as possible**.
 
-<ul>
-	<li>The number of nodes in the tree is in the range <code>[1, 100]</code>.</li>
-	<li><code>1 &lt;= Node.val &lt;= 1000</code></li>
-</ul>
+---
+
+## Intuition
+
+A complete binary tree follows a strict order when its nodes are viewed **level by level from left to right**.
+
+During a level-order traversal, once we encounter a `NULL` position, there should not be any more non-null nodes afterward.
+
+For example:
+
+```text id="r5l2kc"
+        1
+       / \
+      2   3
+     / \  /
+    4   5 6
+```
+
+This is complete because the last level is filled from left to right.
+
+But:
+
+```text id="7qkqyb"
+        1
+       / \
+      2   3
+       \   \
+        5   7
+```
+
+is not complete because there are missing positions before later nodes.
+
+---
+
+## Approach
+
+Use **Breadth-First Search (BFS)** with a queue.
+
+Process the tree level by level and include `NULL` children in the traversal.
+
+Maintain a flag indicating whether a `NULL` node has been encountered.
+
+* Before encountering `NULL`, nodes can have children normally.
+* Once a `NULL` position is found, every following position must also be `NULL`.
+* If a non-null node appears after a `NULL` position, the tree is not complete.
+* If traversal finishes without violating this condition, the tree is complete.
+
+---
+
+## Data Structure Used
+
+* **Queue** — to perform level-order traversal.
+* **Boolean Flag** — to track whether a `NULL` position has already been encountered.
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+Every node is processed once.
+
+### Space Complexity
+
+**O(n)**
+
+The queue can contain up to `n` elements in the worst case.
+
+---
+
+## Key Takeaway
+
+The main concept is:
+
+**BFS + NULL Position Checking**
+
+During level-order traversal, once a `NULL` position is encountered, **no non-null node should appear afterward**.
+
+This ensures that the last level is filled completely from **left to right**.
+
+**Time:** `O(n)`
+**Space:** `O(n)`
