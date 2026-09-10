@@ -74,6 +74,7 @@ This repository is shared for educational purposes.
 | ------- |
 | [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
+| [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 | [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
 ## String
 |  |
@@ -91,6 +92,7 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
+| [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 ## Tree
 |  |
 | ------- |
@@ -141,4 +143,12 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0232-implement-queue-using-stacks](https://github.com/AD-hub01/Leetcode/tree/master/0232-implement-queue-using-stacks) |
+## Knapsack Problem
+|  |
+| ------- |
+| [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
+## 0-1 Knapsack
+|  |
+| ------- |
+| [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 <!---LeetCode Topics End-->
