@@ -151,4 +151,16 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
+## Math
+|  |
+| ------- |
+| [0258-add-digits](https://github.com/AD-hub01/Leetcode/tree/master/0258-add-digits) |
+## Simulation
+|  |
+| ------- |
+| [0258-add-digits](https://github.com/AD-hub01/Leetcode/tree/master/0258-add-digits) |
+## Number Theory
+|  |
+| ------- |
+| [0258-add-digits](https://github.com/AD-hub01/Leetcode/tree/master/0258-add-digits) |
 <!---LeetCode Topics End-->
