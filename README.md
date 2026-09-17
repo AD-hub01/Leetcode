@@ -74,6 +74,7 @@ This repository is shared for educational purposes.
 | ------- |
 | [0084-largest-rectangle-in-histogram](https://github.com/AD-hub01/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
+| [0322-coin-change](https://github.com/AD-hub01/Leetcode/tree/master/0322-coin-change) |
 | [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 | [2416-sum-of-prefix-scores-of-strings](https://github.com/AD-hub01/Leetcode/tree/master/2416-sum-of-prefix-scores-of-strings) |
 ## String
@@ -92,6 +93,7 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/AD-hub01/Leetcode/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
+| [0322-coin-change](https://github.com/AD-hub01/Leetcode/tree/master/0322-coin-change) |
 | [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 ## Tree
 |  |
@@ -108,6 +110,7 @@ This repository is shared for educational purposes.
 | [0103-binary-tree-zigzag-level-order-traversal](https://github.com/AD-hub01/Leetcode/tree/master/0103-binary-tree-zigzag-level-order-traversal) |
 | [0107-binary-tree-level-order-traversal-ii](https://github.com/AD-hub01/Leetcode/tree/master/0107-binary-tree-level-order-traversal-ii) |
 | [0199-binary-tree-right-side-view](https://github.com/AD-hub01/Leetcode/tree/master/0199-binary-tree-right-side-view) |
+| [0322-coin-change](https://github.com/AD-hub01/Leetcode/tree/master/0322-coin-change) |
 | [0515-find-largest-value-in-each-tree-row](https://github.com/AD-hub01/Leetcode/tree/master/0515-find-largest-value-in-each-tree-row) |
 ## Binary Tree
 |  |
@@ -146,6 +149,7 @@ This repository is shared for educational purposes.
 ## Knapsack Problem
 |  |
 | ------- |
+| [0322-coin-change](https://github.com/AD-hub01/Leetcode/tree/master/0322-coin-change) |
 | [0416-partition-equal-subset-sum](https://github.com/AD-hub01/Leetcode/tree/master/0416-partition-equal-subset-sum) |
 ## 0-1 Knapsack
 |  |
@@ -163,4 +167,8 @@ This repository is shared for educational purposes.
 |  |
 | ------- |
 | [0258-add-digits](https://github.com/AD-hub01/Leetcode/tree/master/0258-add-digits) |
+## Complete Knapsack
+|  |
+| ------- |
+| [0322-coin-change](https://github.com/AD-hub01/Leetcode/tree/master/0322-coin-change) |
 <!---LeetCode Topics End-->
